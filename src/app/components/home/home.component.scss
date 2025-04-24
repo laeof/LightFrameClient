@@ -1,0 +1,22 @@
+@import "@shared/button.scss";
+
+.news {
+    padding: 2rem 20rem;
+    .top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .newss {
+            .title {
+                font-size: 2rem;
+                padding: 1rem 0;
+            }
+            .subtitle {
+                font-size: 1.5rem;
+            }
+        }
+        .button {
+            height: 100%;
+        }
+    }
+}

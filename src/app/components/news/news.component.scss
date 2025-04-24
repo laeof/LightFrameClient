@@ -1,0 +1,68 @@
+.wrapper {
+    display: flex;
+    gap: 20px;
+    padding: 1.5rem 0;
+
+    .news-card {
+        position: relative;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        border-radius: 1rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        overflow: hidden;
+
+        .overlay {
+            border-radius: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.5);
+            height: 100%;
+            width: 100%;
+            font-size: 1.5rem;
+            color: rgb(255, 255, 255);
+            display: none;
+        }
+        .img-wrapper {
+            min-width: 380px;
+            width: 380px;
+            min-height: 250px;
+            height: 250px;
+            .img {
+                object-fit: cover;
+            }
+        }
+        .text-wrapper {
+            width: 380px;
+            padding: 10px 0;
+        }
+        .title {
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+        .subtitle {
+            font-weight: 400;
+            font-size: 1rem;
+            color: rgb(11, 11, 216);
+            padding: 10px 0;
+        }
+        .text {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+        }
+        &:hover {
+            cursor: pointer;
+            .overlay {
+                display: flex;
+            }
+        }
+    }
+}

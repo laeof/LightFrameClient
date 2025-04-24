@@ -1,0 +1,39 @@
+@import "@shared/variables.scss";
+
+.footer {
+    background-color: $mainBackgroundColor;
+    color: rgb(255, 255, 255);
+    ul {
+        display: flex;
+        justify-content: space-around;
+        padding: 5rem;
+        li {
+            .logo {
+                padding: 0 0 1rem 0;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                .img-wrap {
+                    height: 50px;
+                    width: 50px;
+                    min-height: 50px;
+                    min-width: 50px;
+                }
+                .text {
+                    font-size: 1.5rem;
+                }
+            }
+
+            h2 {
+                padding: 0 0 .75rem 0;
+            }
+
+            .subtitle {
+                &:not(:last-child) {
+                    padding: 0 0 .5rem 0;
+                }
+            }
+        }
+    }
+}

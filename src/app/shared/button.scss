@@ -1,0 +1,35 @@
+@import "@shared/variables.scss";
+
+.button {
+    background-color: transparent;
+    border-radius: 0.25rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.25rem;
+    cursor: pointer;
+
+    &.white {
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+    }
+
+    &.black {
+        background-color: $mainBackgroundColor;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    }
+
+    &.orange {
+        background-color: rgb(255, 77, 0);
+        color: rgb(255, 255, 255);
+
+        &:hover {
+            background-color: rgba(255, 77, 0, 0.7);
+        }
+    }
+}

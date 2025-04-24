@@ -1,0 +1,19 @@
+<div class="wrapper" *ngIf="news">
+    <div class="news-card" *ngFor="let i of news">
+        <div class="overlay">Читати бiльше</div>
+        <div class="img-wrapper">
+            <img class="img" src="{{i.photoUrl}}">
+        </div>
+        <div class="text-wrapper">
+            <p class="title">
+                {{i.title}}
+            </p>
+            <p class="subtitle">
+                {{i.newsType}}
+            </p>
+            <p class="text">
+                {{i.text}}
+            </p>
+        </div>
+    </div>
+</div>

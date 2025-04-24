@@ -1,0 +1,10 @@
+<div class="wrapper">
+    <h1 class="title">Найпопулярнiшi кiмнати</h1>
+    <div class="room-wrapper">
+        <div class="room" *ngFor="let i of rooms">
+            <div class="overlay">Записатись</div>
+            <img class="img" src="{{i.photoUrl}}">
+            <p class="name">{{i.name}}</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="header">
+    <div class="logo">
+        <div class="img-wrap">
+            <img class="img" src="../../../assets/imgs/logo.png">
+        </div>
+        <div class="text">LightFrame</div>
+    </div>
+    <div class="links-wrap">
+        <ul class="links">
+            <li class="link">Головна</li>
+            <li class="link">Аренда</li>
+            <li class="link">Кiмнати</li>
+            <li class="link">Майстри</li>
+            <li class="link">Доєднатись</li>
+            <li class="link">Новини</li>
+        </ul>
+    </div>
+    <div class="user" *ngIf="user?.id">
+        <div class="img-wrap">
+            <img class="img" src="{{user?.photoUrl}}">
+        </div>
+        <div class="name">
+            {{user?.name}}
+        </div>
+    </div>
+    <div class="authbuttons" *ngIf="!user?.id">
+        <span class="button black">Sign in</span>
+        <span class="button white">Sign up</span>
+    </div>
+</div>

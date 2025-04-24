@@ -1,0 +1,52 @@
+.wrapper {
+    .title {
+        font-size: 2rem;
+        text-align: center;
+        padding: 1rem;
+    }
+    .room-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-shrink: 0;
+        .room {
+            position: relative;
+
+            display: flex;
+            justify-content: center;
+
+            .overlay {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                color: rgb(255, 255, 255);
+                font-size: 2rem;
+                cursor: pointer;
+                user-select: none;
+                display: none;
+            }
+
+            .name {
+                position: absolute;
+                bottom: 1rem;
+                font-weight: 200;
+                font-size: 3rem;
+                color: rgb(255, 255, 255);
+                text-shadow: 3px 3px 3px rgb(0, 0, 0);
+            }
+
+            .img {
+                max-height: 300px;
+            }
+
+            &:hover {
+                .overlay {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}

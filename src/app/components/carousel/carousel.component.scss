@@ -1,0 +1,28 @@
+@import "@shared/variables.scss";
+.wrapper {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+
+    .text-wrapper {
+        display: flex;
+        justify-content: space-between;
+        background: $mainColor;
+        gap: 2rem;
+        align-items: center;
+        flex-shrink: 0;
+        animation: scroll 20s linear infinite;
+        .text {
+            font-size: 2rem;
+            text-transform: uppercase;
+            padding: 0 6rem;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+@keyframes scroll {
+    to {
+        transform: translate(-100%);
+    }
+}

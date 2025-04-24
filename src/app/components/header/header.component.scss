@@ -1,0 +1,75 @@
+@import "@shared/variables.scss";
+@import "@shared/button.scss";
+
+.header {
+    background-color: $mainBackgroundColor;
+    color: $mainFontColor;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        .img-wrap {
+            height: 50px;
+            width: 50px;
+            min-height: 50px;
+            min-width: 50px;
+        }
+        .text {
+            font-size: 1.5rem;
+        }
+    }
+
+    .links-wrap {
+        .links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 1.25rem;
+            .link {
+                cursor: pointer;
+                &:hover {
+                    color: rgb(255, 0, 0);
+                }
+            }
+        }
+    }
+
+    .user {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        .img-wrap {
+            height: 50px;
+            width: 50px;
+            min-height: 50px;
+            min-width: 50px;
+
+            .img {
+                object-fit: cover;
+                border-radius: 50%;
+            }
+        }
+
+        .name {
+            color: rgb(255, 255, 255);
+        }
+    }
+
+    .authbuttons {
+        .button {
+            &:not(:last-child) {
+                margin-right: 2rem;
+            }
+        }
+    }
+}
