@@ -1,0 +1,37 @@
+@import "@shared/button.scss";
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+    h2 {
+        font-size: 2rem;
+        padding: 1.5rem 0;
+    }
+
+    .sub {
+        gap: 5rem;
+        display: flex;
+        align-items: center;
+        padding: 0 2rem;
+        .subtitle {
+            font-weight: 400;
+            font-size: 1.25rem;
+        }
+    }
+
+    .rules {
+        padding: 0 10rem;
+        h2 {
+            font-size: 1.5rem;
+            padding: 0.5rem 0;
+        }
+        ol {
+            padding: 1rem 0;
+            li {
+                margin-left: 1.2rem;
+            }
+        }
+    }
+}

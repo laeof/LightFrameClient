@@ -1,1 +1,14 @@
-<p>rooms works!</p>
+<app-roomscarousel>
+
+</app-roomscarousel>
+
+<div class="wrapper">
+    <h2>Усi кiмнати</h2>
+    <div class="room-wrapper">
+        <div class="room" *ngFor="let i of rooms" (click)="redirectTo('rooms/' + i.id)">
+            <div class="overlay">Записатись</div>
+            <img class="img" src="{{i.photoUrl}}">
+            <p class="name">{{i.name}}</p>
+        </div>
+    </div>
+</div>

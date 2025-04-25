@@ -1,5 +1,5 @@
 <div class="header">
-    <div class="logo">
+    <div class="logo" (click)="redirectTo('home')">
         <div class="img-wrap">
             <img class="img" src="../../../assets/imgs/logo.png">
         </div>
@@ -7,12 +7,12 @@
     </div>
     <div class="links-wrap">
         <ul class="links">
-            <li class="link">Головна</li>
-            <li class="link">Аренда</li>
-            <li class="link">Кiмнати</li>
-            <li class="link">Майстри</li>
-            <li class="link">Доєднатись</li>
-            <li class="link">Новини</li>
+            <li class="link" (click)="redirectTo('home')">Головна</li>
+            <li class="link" (click)="redirectTo('rentrules')">Оренда</li>
+            <li class="link" (click)="redirectTo('rooms')">Кiмнати</li>
+            <li class="link" (click)="redirectTo('photographers')">Майстри</li>
+            <li class="link" (click)="redirectTo('hire')">Долучитись</li>
+            <li class="link" (click)="redirectTo('news')">Новини</li>
         </ul>
     </div>
     <div class="user" *ngIf="user?.id">
@@ -24,7 +24,7 @@
         </div>
     </div>
     <div class="authbuttons" *ngIf="!user?.id">
-        <span class="button black">Sign in</span>
-        <span class="button white">Sign up</span>
+        <span class="button black" (click)="redirectTo('auth')">Sign in</span>
+        <span class="button white" (click)="redirectTo('auth')">Sign up</span>
     </div>
 </div>

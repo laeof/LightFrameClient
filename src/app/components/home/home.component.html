@@ -7,11 +7,11 @@
             <h2 class="title">Новини</h2>
             <h3 class="subtitle">Слiдкуйте за нашими новинами</h3>
         </div>
-        <span class="button orange">
+        <span class="button orange" (click)="redirectTo('news')">
             Усi новини
         </span>
     </div>
-    <app-news>
+    <app-news [limiter]="3">
 
     </app-news>
 </div>

@@ -1,1 +1,18 @@
-<p>photographers works!</p>
+<div class="wrapper">
+    <h2 class="title">Це нашi фотографи</h2>
+    <div class="proposal">
+        <p class="subtitle">В нас небагата команда, але якщо ви маєте навички, долучайтеся!</p>
+        <span class="button orange" (click)="redirectTo()">Долучитись</span>
+    </div>
+    <div class="wrap-masters">
+        <div class="master-card" *ngFor="let i of masters">
+            <div class="wrap-img">
+                <img class="img" src="{{i.photoUrl}}">
+            </div>
+            <div class="info">
+                <h2 class="title">{{i.name}}</h2>
+                <p class="subtitle">Досвiд роботи: {{i.workExperience}}</p>
+            </div>
+        </div>
+    </div>
+</div>

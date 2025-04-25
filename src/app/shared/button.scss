@@ -18,9 +18,10 @@
 
     &.black {
         background-color: $mainBackgroundColor;
+        color: rgb(255, 255, 255);
 
         &:hover {
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgb(65, 65, 65);
         }
     }
 
@@ -30,6 +31,25 @@
 
         &:hover {
             background-color: rgba(255, 77, 0, 0.7);
+        }
+    }
+
+    &.green {
+        background-color: rgb(27, 219, 27);
+        color: rgb(255, 255, 255);
+        font-weight: 400;
+
+        &:hover {
+            background-color: rgb(25, 196, 25);
+        }
+
+        &.selected {
+            background-color: rgb(24, 174, 24);
+        }
+
+        &.red {
+            background-color: rgb(204, 21, 21);
+            cursor: default;
         }
     }
 }

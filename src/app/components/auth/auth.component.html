@@ -1,1 +1,26 @@
-<p>auth works!</p>
+<div class="wrapper">
+    <form class="form" *ngIf="sign">
+        <h2>Sign Up</h2>
+        <div class="inputs">
+            <input type="text" class="input" placeholder="Email@example.com">
+            <input type="text" class="input" placeholder="+38(000)0000000">
+            <input type="text" class="input" placeholder="Name">
+            <input type="password" class="input" placeholder="Password">
+        </div>
+        <div class="buttons">
+            <input type="submit" class="button orange" value="Sign Up">
+            <span class="button white" (click)="toggleSign()">Already have an account? Sign In</span>
+        </div>
+    </form>
+    <form class="form" *ngIf="!sign">
+        <h2>Sign In</h2>
+        <div class="inputs">
+            <input type="text" class="input" placeholder="Email@example.com">
+            <input type="password" class="input" placeholder="Password">
+        </div>
+        <div class="buttons">
+            <input type="submit" class="button orange" value="Sign In">
+            <span class="button white" (click)="toggleSign()">Don't have an account? Sign Up!</span>
+        </div>
+    </form>
+</div>

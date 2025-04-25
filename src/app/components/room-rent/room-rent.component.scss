@@ -1,0 +1,57 @@
+@import "@shared/button.scss";
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 2rem 0;
+
+    .info {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
+        .wrap-img {
+            height: 250px;
+            width: 380px;
+            max-height: 250px;
+            max-width: 380px;
+            .img {
+                object-fit: cover;
+            }
+        }
+
+        .price {
+            .subtitle {
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    .title {
+        font-size: 2rem;
+        margin: 2rem 0;
+    }
+
+    .notes {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 3rem;
+        padding: 0 0 4rem;
+        width: 50%;
+        .note {
+            display: grid;
+        }
+    }
+
+    .pay {
+        padding: 0 0 3rem;
+        .button {
+            padding: 1.5rem 10rem;
+        }
+    }
+}

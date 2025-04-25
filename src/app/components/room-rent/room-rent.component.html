@@ -1,0 +1,22 @@
+<div class="wrapper">
+    <div class="info">
+        <div class="wrap-img">
+            <img class="img" src="{{room?.photoUrl}}">
+        </div>
+        <div class="price">
+            <h2 class="title">Назва: {{room?.name}}</h2>
+            <p class="subtitle">Цiна за годину: {{room?.hourPrice}}</p>
+            <p class="subtitle">Адреса: {{room?.address}}</p>
+        </div>
+    </div>
+    <h2 class="title">Запис на сьогоднi</h2>
+    <div class="notes">
+        <div class="note" *ngFor="let i of notes" (click)="clickNote(i)">
+            <span class="button green" [ngClass]="{'red': i.rent, 'selected': i.id === clickedNote?.id}">{{i.start}} -
+                {{i.end}}</span>
+        </div>
+    </div>
+    <div class="pay" *ngIf="clickedNote">
+        <span class="button black" (click)="payForNote()">Сплатити</span>
+    </div>
+</div>

@@ -1,1 +1,19 @@
-<p>hire works!</p>
+<div class="wrapper">
+    <h2 class="title">Долучитись</h2>
+    <p clas="subtitle">Щоб долучитись до команди заповнiть форму нижче</p>
+    <form class="form" [formGroup]="masterForm" (submit)="submitForm()" enctype="multipart/form-data">
+        <div class="block">
+            <label for="">Iм'я</label>
+            <input class="input" type="text" id="name" formControlName="name">
+        </div>
+        <div class="block">
+            <label for="">Досвiд роботи</label>
+            <input class="input" type="text" id="exp" formControlName="exp">
+        </div>
+        <div class="block">
+            <label for="">Фото url</label>
+            <input class="input" type="text" id="photo" formControlName="photo">
+        </div>
+        <input type="submit" class="button orange" value="Вiдправити">
+    </form>
+</div>
