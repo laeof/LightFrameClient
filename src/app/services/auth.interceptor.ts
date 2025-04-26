@@ -1,5 +1,5 @@
 import { HttpErrorResponse, HttpInterceptorFn } from "@angular/common/http";
-import { catchError } from "rxjs";
+import { catchError, interval, switchMap, throwError } from "rxjs";
 import { ITokens } from "../dtos/ITokens";
 import { AuthService } from "./auth.service";
 import { inject } from "@angular/core";
@@ -20,21 +20,15 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
         },
     });
 
+    console.log(clonedRequest.headers)
+
     return next(clonedRequest).pipe(
         catchError((error: HttpErrorResponse) => {
             console.error('Error intercepted:', error);
 
             let intervalAuth = 2500;
-            let intervalZero = 1000;
 
-            if (error.error?.error === 'Refresh token does not exist' ||
-                error.error?.error === 'Token is expired' ||
-                error.error?.error === 'Refresh token is not equal to actual' 
-            )
-            {
-                cookieService.deleteTokens();
-            }
-            else if (error.status === 401) {
+            if (error.status === 401) {
                 console.log(`error auth, retrying in ${intervalAuth / 1000} sec`);
 
                 return interval(intervalAuth).pipe(
@@ -64,13 +58,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
                     })
                 );
             }
-            else if (error.status === 0) {
-                console.log(`error 0, retrying in ${intervalZero / 1000} sec`);
-                console.log("intervalZero: " + intervalZero)
-                return interval(intervalZero).pipe(
-                    switchMap(() => next(clonedRequest))
-                );
-            }
+            
             return throwError(() => error);
         })
     );
