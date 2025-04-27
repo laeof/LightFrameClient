@@ -1,8 +1,10 @@
 import { BehaviorSubject, Observable } from "rxjs";
 import { IUser } from "../dtos/IUser";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { ApiService } from "./api.service";
 import { Injectable } from "@angular/core";
+import { LFCookieService } from "./cookie.service";
+import { CookieService } from "ngx-cookie-service";
 
 
 @Injectable({
@@ -10,18 +12,12 @@ import { Injectable } from "@angular/core";
 })
 
 export class UserService {
-    
+
     user = new BehaviorSubject<IUser | undefined>(undefined);
     constructor(private http: HttpClient,
-        private apiService: ApiService
+        private apiService: ApiService,
+        private cookieService: LFCookieService
     ) {
-        let user: IUser = {
-            photoUrl: '../../assets/imgs/1.jpg',
-            name: 'sdas sadas',
-            id: ''
-        }
-
-        this.user.next(user);
     }
 
     getCurrentUser(): Observable<IUser | undefined> {
@@ -39,6 +35,11 @@ export class UserService {
     }
 
     exchangeTokenOnUser(): Observable<IUser> {
-        return this.http.get<IUser>(this.apiService.getApi() + 'User/GetUser/')
+
+        const headers = new HttpHeaders({
+            'Authorization-Required': 'true'
+        });
+
+        return this.http.get<IUser>(this.apiService.getApi() + 'User/GetUser/', { headers })
     }
 }

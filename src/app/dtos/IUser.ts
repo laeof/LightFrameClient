@@ -1,5 +1,7 @@
 export interface IUser {
     photoUrl: string,
-    name: string,
+    firstName: string,
+    lastName: string,
     id: string,
+    phoneNumber: string,
 }

@@ -1,4 +1,4 @@
-import { HttpErrorResponse, HttpInterceptorFn } from "@angular/common/http";
+import { HttpErrorResponse, HttpHeaders, HttpInterceptorFn } from "@angular/common/http";
 import { catchError, interval, switchMap, throwError } from "rxjs";
 import { ITokens } from "../dtos/ITokens";
 import { AuthService } from "./auth.service";
@@ -6,9 +6,15 @@ import { inject } from "@angular/core";
 import { LFCookieService } from "./cookie.service";
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
+    const isAuthRequired = req.headers.get('Authorization-Required') === 'true';
+
+    if (!isAuthRequired) {
+        return next(req);
+    }
+
     const accountService = inject(AuthService)
     const cookieService = inject(LFCookieService)
-
+    
     let tokens: ITokens = {
         accessToken: cookieService.accessToken.value,
         refreshToken: cookieService.refreshToken.value
@@ -20,15 +26,19 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
         },
     });
 
-    console.log(clonedRequest.headers)
-
     return next(clonedRequest).pipe(
         catchError((error: HttpErrorResponse) => {
             console.error('Error intercepted:', error);
 
             let intervalAuth = 2500;
 
-            if (error.status === 401) {
+            if (error.error?.error === 'Refresh token does not exist' ||
+                error.error?.error === 'Token is expired' ||
+                error.error?.error === 'Refresh token is not equal to actual'
+            ) {
+                cookieService.deleteTokens();
+            }
+            else if (error.status === 401) {
                 console.log(`error auth, retrying in ${intervalAuth / 1000} sec`);
 
                 return interval(intervalAuth).pipe(
@@ -43,6 +53,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
                                         Authorization: `Bearer ${response.accessToken}`,
                                     },
                                 });
+                                console.log(retryRequest.headers)
 
                                 return next(retryRequest)
                             }),
@@ -58,7 +69,6 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
                     })
                 );
             }
-            
             return throwError(() => error);
         })
     );

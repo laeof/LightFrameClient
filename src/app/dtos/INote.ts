@@ -4,4 +4,7 @@ export interface INote {
     end: string,
     rent: boolean,
     roomId: string,
+    day: string,
+    paidState: boolean,
+    isDisabled: boolean
 }

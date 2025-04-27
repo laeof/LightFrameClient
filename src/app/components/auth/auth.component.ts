@@ -1,9 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { first } from 'rxjs';
 import { ITokens } from 'src/app/dtos/ITokens';
+import { IUser } from 'src/app/dtos/IUser';
 import { AuthService } from 'src/app/services/auth.service';
 import { LFCookieService } from 'src/app/services/cookie.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
     selector: 'app-auth',
@@ -29,7 +32,8 @@ export class AuthComponent {
     });
 
     constructor(private authService: AuthService,
-        private cookieService: LFCookieService
+        private cookieService: LFCookieService,
+        private userService: UserService
     ) {
 
     }

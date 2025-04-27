@@ -7,6 +7,7 @@ import { HireComponent } from './components/hire/hire.component';
 import { PhotographersComponent } from './components/photographers/photographers.component';
 import { NewsComponent } from './components/news/news.component';
 import { RoomRentComponent } from './components/room-rent/room-rent.component';
+import { MynotesComponent } from './components/mynotes/mynotes.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -18,4 +19,5 @@ export const routes: Routes = [
     { path: 'news', component: NewsComponent },
     { path: 'auth', component: AuthComponent },
     { path: 'hire', component: HireComponent },
+    { path: 'mynotes', component: MynotesComponent}
 ];

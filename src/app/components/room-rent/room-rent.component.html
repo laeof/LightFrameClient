@@ -5,7 +5,7 @@
         </div>
         <div class="price">
             <h2 class="title">Назва: {{room?.name}}</h2>
-            <p class="subtitle">Цiна за годину: {{room?.hourPrice}}</p>
+            <p class="subtitle">Цiна за годину: {{room?.price}}</p>
             <p class="subtitle">Адреса: {{room?.address}}</p>
         </div>
     </div>
@@ -16,7 +16,11 @@
                 {{i.end}}</span>
         </div>
     </div>
-    <div class="pay" *ngIf="clickedNote">
-        <span class="button black" (click)="payForNote()">Сплатити</span>
+    <form class="form" [formGroup]="noteForm" *ngIf="clickedNote && !user">
+        <input type="text" class="input" formControlName="name" placeholder="Ім'я">
+        <input type="text" class="input" formControlName="phoneNumber" placeholder="+380000000000">
+    </form>
+    <div class="pay" *ngIf="(noteForm.value.name && noteForm.value.phoneNumber) || (clickedNote && user)">
+        <span class="button black" (click)="createNote()">Створити</span>
     </div>
 </div>

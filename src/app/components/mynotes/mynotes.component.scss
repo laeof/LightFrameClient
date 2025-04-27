@@ -1,0 +1,78 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+        font-size: 2rem;
+        padding: 2rem;
+    }
+
+    .table-wrapper {
+        width: 100%;
+        padding: 1rem 3rem 3rem;
+
+        table {
+            width: 100%;
+
+            tr {
+                width: 100%;
+
+                td {
+                    text-align: center;
+                }
+            }
+
+            thead {
+                tr {
+                    td {
+                        padding: 0 0 2rem 0
+                    }
+                }
+            }
+
+            tbody {
+                tr {
+                    td {
+                        &:nth-child(2) {
+                            cursor: pointer;
+
+                            &:hover {
+                                background-color: rgb(186, 186, 186);
+                            }
+                        }
+
+                        .green {
+                            color: white;
+                            background-color: rgb(17, 180, 39);
+                            padding: 1rem;
+                            user-select: none;
+                        }
+
+                        .red {
+                            color: white;
+                            background-color: rgb(202, 21, 21);
+
+                            &:hover {
+                                background-color: rgb(158, 16, 16);
+                            }
+
+                            padding: 1rem;
+                            cursor: pointer;
+                        }
+                    }
+
+                    .secondt {
+                        .red {
+                            cursor: default;
+
+                            &:hover {
+                                background-color: rgb(202, 21, 21);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

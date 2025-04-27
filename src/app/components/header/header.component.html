@@ -15,15 +15,18 @@
             <li class="link" (click)="redirectTo('news')">Новини</li>
         </ul>
     </div>
-    <div class="user" *ngIf="user?.id">
-        <div class="img-wrap">
-            <img class="img" src="{{user?.photoUrl}}">
+    <div class="user" *ngIf="user">
+        <div class="userinfo" (click)="redirectTo('mynotes')">
+            <div class="img-wrap">
+                <img class="img" src="{{user.photoUrl}}">
+            </div>
+            <div class="name">
+                {{user.firstName}} {{user.lastName}}
+            </div>
         </div>
-        <div class="name">
-            {{user?.name}}
-        </div>
+        <span class="button black" (click)="logOut()">Log Out</span>
     </div>
-    <div class="authbuttons" *ngIf="!user?.id">
+    <div class="authbuttons" *ngIf="!user">
         <span class="button black" (click)="redirectTo('auth')">Sign in</span>
         <span class="button white" (click)="redirectTo('auth')">Sign up</span>
     </div>

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IPhotographer } from 'src/app/dtos/IPhotographer';
+import { HireService } from 'src/app/services/hire.service';
 
 @Component({
     selector: 'app-photographers',
@@ -15,19 +16,14 @@ export class PhotographersComponent {
     /**
      *
      */
-    constructor(private router: Router) {
-        this.masters.push({
-            id: '',
-            photoUrl: 'https://www.copyright.gov/engage/photographers/images/side-pic-1.jpg',
-            workExperience: '2 years',
-            name: 'MAGAMED'
-        },
-            {
-                id: '',
-                photoUrl: 'https://www.fujixpassion.com/wp-content/uploads/2023/08/Destaque-1.jpeg',
-                workExperience: '1 year',
-                name: 'ASHOT'
-            },)
+    constructor(private router: Router, private hireService: HireService) {
+        this.hireService.getPhotographers().subscribe(
+            (value: any) => {
+                if (value != undefined) {
+                    this.masters = value.value
+                }
+            }
+        )
     }
 
     redirectTo() {

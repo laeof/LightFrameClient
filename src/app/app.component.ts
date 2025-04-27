@@ -6,7 +6,6 @@ import { CarouselComponent } from "./components/carousel/carousel.component";
 import { RoomsService } from './services/rooms.service';
 import { NotesService } from './services/notes.service';
 import { UserService } from './services/user.service';
-import { PayService } from './services/pay.service';
 import { HireService } from './services/hire.service';
 import { ApiService } from './services/api.service';
 import { AuthService } from './services/auth.service';
@@ -19,7 +18,7 @@ import { ITokens } from './dtos/ITokens';
     selector: 'app-root',
     standalone: true,
     imports: [RouterOutlet, HeaderComponent, FooterComponent, CarouselComponent],
-    providers: [RoomsService, NotesService, UserService, PayService, HireService, ApiService, AuthService, LFCookieService],
+    providers: [RoomsService, NotesService, UserService, HireService, ApiService, AuthService, LFCookieService],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'
 })

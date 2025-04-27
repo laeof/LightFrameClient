@@ -29,6 +29,6 @@ export class HireComponent {
             photoUrl: this.masterForm.value.photo ?? '',
             workExperience: this.masterForm.value.exp ?? '',
             name: this.masterForm.value.name ?? ''
-        })
+        }).subscribe(() => {window.location.href="/photographers"})
     }
 }

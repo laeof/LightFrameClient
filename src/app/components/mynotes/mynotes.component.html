@@ -1,0 +1,106 @@
+<div class="wrapper">
+    <h2>Мої записи</h2>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <td>
+                        №
+                    </td>
+                    <td>
+                        Зал
+                    </td>
+                    <td>
+                        Час
+                    </td>
+                    <td>
+                        Дата
+                    </td>
+                    <td>
+                        Статус оплати
+                    </td>
+                    <td>
+                        Скасування
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of notes; index as o">
+                    <td>
+                        {{o}}
+                    </td>
+                    <td (click)="redirectTo('Rooms/' + i.roomId)">
+                        {{roomNames[i.roomId]}}
+                    </td>
+                    <td>
+                        {{i.start}} - {{i.end}}
+                    </td>
+                    <td>
+                        {{this.dates[i.id]}}
+                    </td>
+                    <td>
+                        <div class="green" *ngIf="i.paidState">
+                            Оплачено
+                        </div>
+                        <div class="red" *ngIf="!i.paidState" (click)="pay(i.id)">
+                            Сплатити
+                        </div>
+                    </td>
+                    <td>
+                        <div class="red" (click)="cancelNote(i.id)">
+                            Скасувати
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <h2>Мої скасовані записи</h2>
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <td>
+                        №
+                    </td>
+                    <td>
+                        Зал
+                    </td>
+                    <td>
+                        Час
+                    </td>
+                    <td>
+                        Дата
+                    </td>
+                    <td>
+                        Статус оплати
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of canceledNotes; index as o">
+                    <td>
+                        {{o}}
+                    </td>
+                    <td (click)="redirectTo('Rooms/' + i.roomId)">
+                        {{roomNames[i.roomId]}}
+                    </td>
+                    <td>
+                        {{i.start}} - {{i.end}}
+                    </td>
+                    <td>
+                        {{this.dates[i.id]}}
+                    </td>
+                    <td class="secondt">
+                        <div class="green" *ngIf="i.paidState">
+                            Оплачено
+                        </div>
+                        <div class="red" *ngIf="!i.paidState">
+                            Не оплачено
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
