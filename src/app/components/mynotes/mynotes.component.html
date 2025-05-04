@@ -1,6 +1,6 @@
 <div class="wrapper">
-    <h2>Мої записи</h2>
-    <div class="table-wrapper">
+    <h2 *ngIf="notes[0]">Мої записи</h2>
+    <div *ngIf="notes[0]" class="table-wrapper">
         <table>
             <thead>
                 <tr>
@@ -55,8 +55,8 @@
             </tbody>
         </table>
     </div>
-    <h2>Мої скасовані записи</h2>
-    <div class="table-wrapper">
+    <h2 *ngIf="canceledNotes[0]">Мої скасовані записи</h2>
+    <div *ngIf="canceledNotes[0]" class="table-wrapper">
         <table>
             <thead>
                 <tr>
@@ -103,4 +103,5 @@
             </tbody>
         </table>
     </div>
+    <h2 *ngIf="!notes[0] && !canceledNotes[0]">Наразi записiв нема!</h2>
 </div>
