@@ -116,12 +116,20 @@ export class NotesService {
         const today = new Date();
 
         const day = today.getDate();
+        let stringDay = day.toString();
+        if(stringDay.length === 1)
+            stringDay = "0" + stringDay;
+
         const month = today.getMonth() + 1;
+
+        let stringMonth = month.toString();
+        if(stringMonth.length === 1)
+            stringMonth = "0" + stringMonth;
         const year = today.getFullYear();
 
         const params = new HttpParams()
-            .set('day', day.toString())
-            .set('month', month.toString())
+            .set('day', stringDay.toString())
+            .set('month', stringMonth.toString())
             .set('year', year.toString());
 
         this.http.get<INote[]>(this.apiService.getApi() + 'Note/GetDay/', { params }).subscribe(
@@ -152,7 +160,16 @@ export class NotesService {
         const today = new Date();
 
         const day = today.getDate();
+        let stringDay = day.toString();
+        if(stringDay.length === 1)
+            stringDay = "0" + stringDay;
+
         const month = today.getMonth() + 1;
+
+        let stringMonth = month.toString();
+        if(stringMonth.length === 1)
+            stringMonth = "0" + stringMonth;
+
         const year = today.getFullYear();
 
         if (user) {
@@ -162,7 +179,7 @@ export class NotesService {
             return this.http.post<INote>(this.apiService.getApi() + 'Note/AddNoteAuth', {
                 start: start,
                 end: end,
-                day: day + "" + month + year,
+                day: stringDay + "" + stringMonth + year,
                 name: user.firstName + " " + user.lastName,
                 phoneNumber: user.phone,
                 roomId: roomId,
@@ -173,7 +190,7 @@ export class NotesService {
             return this.http.post<INote>(this.apiService.getApi() + 'Note/AddNoteGuest', {
                 start: start,
                 end: end,
-                day: day + "" + month + year,
+                day: stringDay + "" + stringMonth + year,
                 name: name,
                 phoneNumber: phoneNumber,
                 roomId: roomId

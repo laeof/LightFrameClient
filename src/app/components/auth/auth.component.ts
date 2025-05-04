@@ -31,6 +31,8 @@ export class AuthComponent {
         password: new FormControl(''),
     });
 
+    error: boolean = false;
+
     constructor(private authService: AuthService,
         private cookieService: LFCookieService,
         private userService: UserService
@@ -43,13 +45,21 @@ export class AuthComponent {
     }
 
     signIn() {
-        this.authService.signIn({ email: this.loginForm.value.email, password: this.loginForm.value.password }).subscribe(
-            (response: ITokens) => {
+        this.authService.signIn({
+            email: this.loginForm.value.email,
+            password: this.loginForm.value.password
+        }).subscribe({
+            next: (response: ITokens) => {
                 this.cookieService.setAccessToken(response.accessToken);
                 this.cookieService.setRefreshToken(response.refreshToken);
-                window.location.href = "home"
+                this.error = false;
+                window.location.href = "home";
+            },
+            error: (error) => {                
+                console.error('Помилка входу:', error);
+                this.error = true;
             }
-        );
+        });
     }
 
     signUp() {
@@ -60,12 +70,17 @@ export class AuthComponent {
             userName: this.regForm.value.email,
             email: this.regForm.value.email,
             password: this.regForm.value.password
-        }).subscribe(
-            (response: ITokens) => {
+        }).subscribe({
+            next: (response: ITokens) => {
                 this.cookieService.setAccessToken(response.accessToken);
                 this.cookieService.setRefreshToken(response.refreshToken);
-                window.location.href = 'home';
+                this.error = false;
+                window.location.href = "home";
+            },
+            error: (error) => {
+                console.error('Помилка входу:', error);
+                this.error = true;
             }
-        )
+        });
     }
 }
